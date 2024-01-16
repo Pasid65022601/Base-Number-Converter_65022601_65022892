@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="box3">
+    <h2 class="box1" style="text-shadow: 2px 2px rgb(169, 169, 169);">Base Converter</h2>
+
+<form class="box2">
+  <label for="inputNumber">Enter a number:</label>
+  <input type="text" id="inputNumber" name="inputNumber" required>
+  
+  <label for="fromBase">From base:</label>
+  <select id="fromBase" name="fromBase">
+    <option value="10">Base 10</option>
+    <option value="2">Base 2</option>
+    <option value="16">Base 16</option>
+  </select>
+  
+  <label for="toBase">To base:</label>
+  <select id="toBase" name="toBase">
+    <option value="2">Base 2</option>
+    <option value="10">Base 10</option>
+    <option value="16">Base 16</option>
+  </select>
+  
+  
+</form>
+<div style="text-align: center; text-decoration: none;">
+    <button class="buttonn" onclick="convert()">Convert</button>
+</div>
+
+<p id="result"></p>
+
+<script>
+function convert() {
+  const inputNumber = document.getElementById('inputNumber').value;
+  const fromBase = parseInt(document.getElementById('fromBase').value, 10);
+  const toBase = parseInt(document.getElementById('toBase').value, 10);
+
+  let result;
+
+  if (fromBase === 10 && toBase === 2) {
+    result = (parseInt(inputNumber, 10)).toString(2);
+  } else if (fromBase === 10 && toBase === 16) {
+    result = (parseInt(inputNumber, 10)).toString(16).toUpperCase();
+  } else if (fromBase === 2 && toBase === 10) {
+    result = parseInt(inputNumber, 2).toString(10);
+  } else if (fromBase === 2 && toBase === 16) {
+    result = parseInt(inputNumber, 2).toString(16).toUpperCase();
+  } else if (fromBase === 16 && toBase === 2) {
+    result = parseInt(inputNumber, 16).toString(2);
+  } else if (fromBase === 16 && toBase === 10) {
+    result = parseInt(inputNumber, 16).toString(10);
+  }
+
+  document.getElementById('result').innerText = `Result: ${result}`;
+}
+</script>
+
+</header>
+
+</body>
+</html>
